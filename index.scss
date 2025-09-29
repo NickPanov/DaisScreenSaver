@@ -1,0 +1,108 @@
+:root {
+    --bg-color: #0e141d;
+    --primary-color: #da6161;
+    --secondary-color: #A60F1C;
+    --accent-color: #e25ae4;
+
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+ 
+.background {
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-color)
+}
+
+$particleSize: 30vmin;
+$animationDuration: 120s;
+$amount: 80;
+
+.background span {
+    width: $particleSize;
+    height: $particleSize;
+    border-radius: $particleSize;
+    backface-visibility: hidden;
+    position: absolute;
+    animation-name: move;
+    animation-duration: $animationDuration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    $colors: (
+       var(--primary-color),
+        var(--secondary-color),
+        var(--accent-color)
+    );
+
+@for $i from 1 through $amount {
+    &:nth-child(#{$i}) {
+        color: nth($colors, random(length($colors)));
+        top: random(100) * 1%;
+        left: random(100) * 1%;
+        animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
+        animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
+        transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+        $blurRadius: (
+            random() + 0.5) * $particleSize * 0.5;
+        $x: if(random() > 0.5, -1, 1
+        );
+    box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+}
+}
+}
+
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+
+#overlay {
+    width: 20%;
+    height: 200px;
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+    padding: 2rem;
+}
+
+#logo-container {
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: 0 0 100px 150px var(--bg-color);
+        border-radius: 40px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        mask-image: url("./mask.svg");
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size:cover;
+        background-color: var(--bg-color);
+        border-radius: 32px;
+
+    }
+
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background: #0e141d;
+    width: 30%;
+    height: 30%;
+    margin: auto;
+
+
+
+}

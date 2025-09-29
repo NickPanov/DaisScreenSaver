@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="logo-container">
+
+    </div>
+    <div id="overlay">
+        <input type="color" value="#0e141d" oninput="setvar('--bg-color', this.value)"> 
+        <input type="color" value="#da6161" oninput="setvar('--primary-color', this.value)">
+        <input type="color" value="#A60F1C" oninput="setvar('--secondary-color', this.value)">
+        <input type="color" value="#e25ae4" oninput="setvar('--accent-color', this.value)">
+     
+
+    </div>
+    <script>
+        // Get the root element
+        var root = document.querySelector(':root');
+
+        // Create a function for setting a variable value
+        function setvar(name, val) {
+            root.style.setProperty(name, val);
+        }
+    </script>
+</body>
+
+</html>
