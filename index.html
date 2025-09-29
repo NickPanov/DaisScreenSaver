@@ -66,13 +66,15 @@
     </div>
     <div id="overlay">
         <div>
-            <input type="color" value="#0e141d" onchange="settoclipboard()" oninput="setvar('--bg-color', this.value)">
-            <input type="color" value="#da6161" onchange="settoclipboard()" oninput="setvar('--primary-color', this.value)">
-            <input type="color" value="#A60F1C" onchange="settoclipboard()" oninput="setvar('--secondary-color', this.value)">
-            <input type="color" value="#e25ae4" onchange="settoclipboard()" oninput="setvar('--accent-color', this.value)">
-          
+            <input type="color" value="#0e141d" oninput="setvar('--bg-color', this.value)">
+            <input type="color" value="#da6161" oninput="setvar('--primary-color', this.value)">
+            <input type="color" value="#A60F1C" oninput="setvar('--secondary-color', this.value)">
+            <input type="color" value="#e25ae4" oninput="setvar('--accent-color', this.value)">
+            <button onclick="settoclipboard()">Get</button>
         </div>
-        
+        <textarea id="output" readonly>
+           </textarea>
+
 
     </div>
     <script>
@@ -84,15 +86,17 @@
         }
         // Create a function for setting a variable value
         function setvar(name, val) {
-            root.style.setProperty(name, val); 
+            root.style.setProperty(name, val);
         }
         function settoclipboard() {
             let bg = readvar('--bg-color');
             let primary = readvar('--primary-color');
             let secondary = readvar('--secondary-color');
             let accent = readvar('--accent-color');
-
-            navigator.clipboard.writeText(`--bg-color: ${bg}; --primary-color: ${primary}; --secondary-color: ${secondary}; --accent-color: ${accent};`);
+            let output = document.getElementById('output');
+            output.value = `Background: ${bg};\n Primary-color: ${primary};\n Secondary-color: ${secondary};\n Accent-color: ${accent};`;
+            output.select();
+            document.execCommand('copy');
         }
     </script>
 </body>

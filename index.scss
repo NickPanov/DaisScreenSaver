@@ -68,7 +68,9 @@ $amount: 80;
     left: 0;
     padding: 2rem;
 }
-
+#output {
+    opacity: 0;
+}
 #logo-container {
 
     &::before {
